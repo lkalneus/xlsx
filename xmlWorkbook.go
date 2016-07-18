@@ -42,6 +42,7 @@ type xlsxWorkbook struct {
 	Sheets             xlsxSheets             `xml:"sheets"`
 	DefinedNames       xlsxDefinedNames       `xml:"definedNames"`
 	CalcPr             xlsxCalcPr             `xml:"calcPr"`
+	Hyperlinks	   xlsxHyperlinks         `xml:"hyperlinks"`
 }
 
 // xlsxWorkbookProtection directly maps the workbookProtection element from the
@@ -117,6 +118,18 @@ type xlsxSheet struct {
 	Id      string `xml:"http://schemas.openxmlformats.org/officeDocument/2006/relationships id,attr,omitempty"`
 	State   string `xml:"state,attr,omitempty"`
 }
+
+// xlsxHyperlinks directly maps the hyperlinks element from the namespace
+type xlsxHyperlinks struct {
+	HyperLink []xlsxHyperlink `xml:"hyperlink"`
+}
+
+// xlsxHyperlink directly maps the hyperlinks element from the namespace
+type xlsxHyperlink struct {
+	Ref	string `xml:"ref,attr,omitempty"`
+	Id      string `xml:"http://schemas.openxmlformats.org/officeDocument/2006/relationships id,attr,omitempty"`
+}
+
 
 // xlsxDefinedNames directly maps the definedNames element from the
 // namespace http://schemas.openxmlformats.org/spreadsheetml/2006/main
